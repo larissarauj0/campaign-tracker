@@ -1,0 +1,26 @@
+{
+  "leads": [
+    { "id": 1, "nome": "Ana Silva", "origem": "Google Ads", "status": "convertido", "data": "2024-01-05" },
+    { "id": 2, "nome": "Carlos Souza", "origem": "Instagram", "status": "em_negociacao", "data": "2024-01-08" },
+    { "id": 3, "nome": "Mariana Lima", "origem": "LinkedIn", "status": "novo", "data": "2024-01-10" },
+    { "id": 4, "nome": "Pedro Costa", "origem": "Google Ads", "status": "convertido", "data": "2024-01-12" },
+    { "id": 5, "nome": "Julia Mendes", "origem": "Instagram", "status": "perdido", "data": "2024-01-15" },
+    { "id": 6, "nome": "Rafael Oliveira", "origem": "Email", "status": "convertido", "data": "2024-01-18" },
+    { "id": 7, "nome": "Fernanda Santos", "origem": "LinkedIn", "status": "em_negociacao", "data": "2024-01-20" },
+    { "id": 8, "nome": "Bruno Alves", "origem": "Google Ads", "status": "novo", "data": "2024-01-22" }
+  ],
+  "campanhas": [
+    { "id": 1, "nome": "Google Ads Janeiro", "canal": "Google Ads", "orcamento": 5000, "gasto": 4200, "leads": 45, "conversoes": 12 },
+    { "id": 2, "nome": "Instagram Stories", "canal": "Instagram", "orcamento": 3000, "gasto": 2800, "leads": 38, "conversoes": 8 },
+    { "id": 3, "nome": "LinkedIn B2B", "canal": "LinkedIn", "orcamento": 4000, "gasto": 3600, "leads": 22, "conversoes": 9 },
+    { "id": 4, "nome": "Email Marketing", "canal": "Email", "orcamento": 1000, "gasto": 800, "leads": 60, "conversoes": 15 }
+  ],
+  "vendas": [
+    { "id": 1, "mes": "Jan", "receita": 32000, "meta": 30000 },
+    { "id": 2, "mes": "Fev", "receita": 28000, "meta": 30000 },
+    { "id": 3, "mes": "Mar", "receita": 35000, "meta": 32000 },
+    { "id": 4, "mes": "Abr", "receita": 41000, "meta": 35000 },
+    { "id": 5, "mes": "Mai", "receita": 38000, "meta": 35000 },
+    { "id": 6, "mes": "Jun", "receita": 45000, "meta": 40000 }
+  ]
+}
