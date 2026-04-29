@@ -4,6 +4,8 @@ import DarkMode from "./components/DarkMode.tsx";
 import { getLeads, getCampanhas, getVendas } from "./services/api";
 import type { Lead, Campanha, Venda } from "./types";
 import VendasChart from "./components/VendasChart.tsx";
+import CampanhasChart from "./components/CampanhasChart.tsx";
+import FunilChart from "./components/FunilChart.tsx";
 
 const App = () => {
   const [leads, setLeads] = useState<Lead[] | null>(null);
@@ -44,6 +46,17 @@ const App = () => {
   const taxaConversao =
     totalLeads > 0 ? Math.round((totalConversoes / totalLeads) * 100) : 0;
   const totalReceita = vendas?.reduce((acc, c) => acc + c.receita, 0) ?? 0;
+  const novos = leads?.filter((lead) => lead.status === "novo");
+  const negociacao = leads?.filter((lead) => lead.status === "em_negociacao");
+  const convertido = leads?.filter((lead) => lead.status === "convertido");
+  const perdido = leads?.filter((lead) => lead.status === "perdido");
+
+  const dadosFunil = [
+    { etapa: "Novo", quantidade: novos?.length ?? 0 },
+    { etapa: "Em Negociação", quantidade: negociacao?.length ?? 0 },
+    { etapa: "Convertido", quantidade: convertido?.length ?? 0 },
+    { etapa: "Perdido", quantidade: perdido?.length ?? 0 },
+  ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
@@ -86,6 +99,12 @@ const App = () => {
           </div>
           <div className="p-4 m-4 bg-zinc-200 dark:bg-zinc-900 rounded-xl ">
             <VendasChart vendas={vendas ?? []} />
+          </div>
+          <div className="p-4 m-4 bg-zinc-200 dark:bg-zinc-900 rounded-xl ">
+            <CampanhasChart campanhas={campanhas ?? []} />
+          </div>
+          <div>
+            <FunilChart dados={dadosFunil} />
           </div>
         </div>
       )}
