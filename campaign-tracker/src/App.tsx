@@ -3,6 +3,7 @@ import MetricCard from "./components/MetricCard.tsx";
 import DarkMode from "./components/DarkMode.tsx";
 import { getLeads, getCampanhas, getVendas } from "./services/api";
 import type { Lead, Campanha, Venda } from "./types";
+import VendasChart from "./components/VendasChart.tsx";
 
 const App = () => {
   const [leads, setLeads] = useState<Lead[] | null>(null);
@@ -56,31 +57,36 @@ const App = () => {
       {isLoading ? (
         <p>Carregando...</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricCard
-            titulo="Leads"
-            valor={leads?.length ?? 0}
-            icone={"📈"}
-            variacao={4}
-          />
-          <MetricCard
-            titulo="Conversão"
-            valor={taxaConversao}
-            icone={"📈"}
-            variacao={-10}
-          />
-          <MetricCard
-            titulo="Receita"
-            valor={totalReceita}
-            icone={"📈"}
-            variacao={-90}
-          />
-          <MetricCard
-            titulo="Campanhas"
-            valor={campanhas?.length ?? 0}
-            icone={"📈"}
-            variacao={7}
-          />
+        <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
+            <MetricCard
+              titulo="Leads"
+              valor={leads?.length ?? 0}
+              icone={"📈"}
+              variacao={4}
+            />
+            <MetricCard
+              titulo="Conversão"
+              valor={taxaConversao}
+              icone={"📈"}
+              variacao={-10}
+            />
+            <MetricCard
+              titulo="Receita"
+              valor={totalReceita}
+              icone={"📈"}
+              variacao={-90}
+            />
+            <MetricCard
+              titulo="Campanhas"
+              valor={campanhas?.length ?? 0}
+              icone={"📈"}
+              variacao={7}
+            />
+          </div>
+          <div className="p-4 m-4 bg-zinc-200 dark:bg-zinc-900 rounded-xl ">
+            <VendasChart vendas={vendas ?? []} />
+          </div>
         </div>
       )}
     </div>
