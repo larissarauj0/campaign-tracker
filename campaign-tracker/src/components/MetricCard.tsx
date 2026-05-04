@@ -1,3 +1,5 @@
+import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
+
 type MetricCardProps = {
   titulo: string;
   valor: number;
@@ -17,9 +19,10 @@ function MetricCard({ titulo, valor, icone, variacao }: MetricCardProps) {
       <div>
         <div className="flex flex-row items-center gap-2">
           <span className="text-xl font-bold">{valor}</span>
-          <span className={variacao > 0 ? "text-green-500" : "text-red-500"}>
-            {variacao > 0 ? "▲" : "▼"} {variacao}%
-          </span>
+          <span className={`flex items-center gap-1 ${variacao > 0 ? "text-green-500" : "text-red-500"}`}>
+  {variacao > 0 ? <FaAngleUp /> : <FaAngleDown />}
+  {variacao}%
+</span>
         </div>
       </div>
     </div>

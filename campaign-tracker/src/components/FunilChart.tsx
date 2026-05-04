@@ -15,11 +15,17 @@ type DadoFunil = {
 
 type FunilChartProps = {
   dados: DadoFunil[];
+  titulo: string;
+  descricao: string;
 };
 
-function FunilChart({ dados }: FunilChartProps) {
+function FunilChart({ dados, titulo, descricao }: FunilChartProps) {
   return (
     <div>
+      <h2 className="text-lg font-semibold mb-1">{titulo}</h2>
+      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+        {descricao}
+      </p>
       <ResponsiveContainer width="100%" height={300}>
         {" "}
         <BarChart data={dados}>

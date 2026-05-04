@@ -6,6 +6,21 @@ import type { Lead, Campanha, Venda } from "./types";
 import VendasChart from "./components/VendasChart.tsx";
 import CampanhasChart from "./components/CampanhasChart.tsx";
 import FunilChart from "./components/FunilChart.tsx";
+import LogoLight from "./assets/campaign_tracker_logolight.png";
+import LogoDark from "./assets/campaign_tracker_logodark.png";
+import { motion } from "framer-motion";
+import { ClipLoader } from "react-spinners";
+import {
+  LuChartPie,
+  LuChartNoAxesCombined,
+  LuFileChartPie,
+  LuChartColumnBig,
+} from "react-icons/lu";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const App = () => {
   const [leads, setLeads] = useState<Lead[] | null>(null);
@@ -39,75 +54,138 @@ const App = () => {
     }
     load();
   }, []);
+
   const isLoading = loadingLeads || loadingCampanhas || loadingVendas;
+
   const totalLeads = campanhas?.reduce((acc, c) => acc + c.leads, 0) ?? 0;
   const totalConversoes =
     campanhas?.reduce((acc, c) => acc + c.conversoes, 0) ?? 0;
   const taxaConversao =
     totalLeads > 0 ? Math.round((totalConversoes / totalLeads) * 100) : 0;
   const totalReceita = vendas?.reduce((acc, c) => acc + c.receita, 0) ?? 0;
-  const novos = leads?.filter((lead) => lead.status === "novo");
-  const negociacao = leads?.filter((lead) => lead.status === "em_negociacao");
-  const convertido = leads?.filter((lead) => lead.status === "convertido");
-  const perdido = leads?.filter((lead) => lead.status === "perdido");
 
   const dadosFunil = [
-    { etapa: "Novo", quantidade: novos?.length ?? 0 },
-    { etapa: "Em Negociação", quantidade: negociacao?.length ?? 0 },
-    { etapa: "Convertido", quantidade: convertido?.length ?? 0 },
-    { etapa: "Perdido", quantidade: perdido?.length ?? 0 },
+    {
+      etapa: "Novo",
+      quantidade: leads?.filter((l) => l.status === "novo").length ?? 0,
+    },
+    {
+      etapa: "Em Negociação",
+      quantidade:
+        leads?.filter((l) => l.status === "em_negociacao").length ?? 0,
+    },
+    {
+      etapa: "Convertido",
+      quantidade: leads?.filter((l) => l.status === "convertido").length ?? 0,
+    },
+    {
+      etapa: "Perdido",
+      quantidade: leads?.filter((l) => l.status === "perdido").length ?? 0,
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-family:DM Serif Display, serif">
       {/* Header */}
       <header className="border-b border-zinc-400 dark:border-zinc-800 flex flex-col sm:flex-row justify-between items-center p-3 sm:p-4">
         <div className="flex items-center flex-wrap justify-center sm:justify-start">
           <DarkMode />
         </div>
+        <div className="mx-auto">
+          <img src={LogoLight} className="h-10 block dark:hidden" />
+          <img src={LogoDark} className="h-10 hidden dark:block" />
+        </div>
       </header>
-      {erroLeads && <p className="text-red-500">{erroLeads}</p>}
+
+      {erroLeads && <p className="text-red-500 p-4">{erroLeads}</p>}
+
       {isLoading ? (
-        <p>Carregando...</p>
+        <div className="min-h-screen flex justify-center items-center">
+          <ClipLoader color="#18181b" size={40} />
+        </div>
       ) : (
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
-            <MetricCard
-              titulo="Leads"
-              valor={leads?.length ?? 0}
-              icone={"📈"}
-              variacao={4}
+        <div className="p-4 flex flex-col gap-6">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+              <MetricCard
+                titulo="Leads"
+                valor={leads?.length ?? 0}
+                icone={<LuChartPie />}
+                variacao={4}
+              />
+              <MetricCard
+                titulo="Conversão"
+                valor={taxaConversao}
+                icone={<LuChartNoAxesCombined />}
+                variacao={-10}
+              />
+              <MetricCard
+                titulo="Receita"
+                valor={totalReceita}
+                icone={<LuChartColumnBig />}
+                variacao={-90}
+              />
+              <MetricCard
+                titulo="Campanhas"
+                valor={campanhas?.length ?? 0}
+                icone={<LuFileChartPie />}
+                variacao={7}
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-4"
+          >
+            <VendasChart
+              vendas={vendas ?? []}
+              titulo="Receita vs Meta"
+              descricao="Comparativo mensal de receita realizada e meta"
             />
-            <MetricCard
-              titulo="Conversão"
-              valor={taxaConversao}
-              icone={"📈"}
-              variacao={-10}
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-4"
+          >
+            <CampanhasChart
+              campanhas={campanhas ?? []}
+              titulo="Desempenho de Campanhas"
+              descricao="Comparativo de orçamento, gasto, leads e conversões por campanha"
             />
-            <MetricCard
-              titulo="Receita"
-              valor={totalReceita}
-              icone={"📈"}
-              variacao={-90}
-            />
-            <MetricCard
-              titulo="Campanhas"
-              valor={campanhas?.length ?? 0}
-              icone={"📈"}
-              variacao={7}
-            />
-          </div>
-          <div className="p-4 m-4 bg-zinc-200 dark:bg-zinc-900 rounded-xl ">
-            <VendasChart vendas={vendas ?? []} />
-          </div>
-          <div className="p-4 m-4 bg-zinc-200 dark:bg-zinc-900 rounded-xl ">
-            <CampanhasChart campanhas={campanhas ?? []} />
-          </div>
-          <div>
-            <FunilChart dados={dadosFunil} />
-          </div>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-4"
+          >
+            <FunilChart dados={dadosFunil} 
+            titulo="Funil de Conversão"
+              descricao="Distribuição de leads por etapa do processo de vendas"/>
+          </motion.div>
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="border-t border-zinc-400 dark:border-zinc-800 flex justify-end p-3 sm:p-4">
+        <img src={LogoLight} className="h-10 block dark:hidden" />
+        <img src={LogoDark} className="h-10 hidden dark:block" />
+      </footer>
     </div>
   );
 };

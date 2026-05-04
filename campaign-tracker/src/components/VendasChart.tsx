@@ -11,11 +11,17 @@ import {
 
 type VendasChartProps = {
   vendas: Venda[];
+  titulo: string;
+  descricao: string;
 };
 
-function VendasChart({ vendas }: VendasChartProps) {
+function VendasChart({ vendas, titulo, descricao }: VendasChartProps) {
   return (
     <div>
+      <h2 className="text-lg font-semibold mb-1">{titulo}</h2>
+      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+        {descricao}
+      </p>
       <ResponsiveContainer width="100%" height={300}>
         {" "}
         <LineChart data={vendas}>

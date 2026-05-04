@@ -11,12 +11,19 @@ import {
 
 type CampanhasChartProps = {
   campanhas: Campanha[];
+  titulo: string;
+  descricao: string;
 };
 
-function CampanhasChart({ campanhas }: CampanhasChartProps) {
+function CampanhasChart({ campanhas, titulo, descricao }: CampanhasChartProps) {
   return (
     <div>
+      <h2 className="text-lg font-semibold mb-1">{titulo}</h2>
+      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+        {descricao}
+      </p>
       <ResponsiveContainer width="100%" height={300}>
+  
         {" "}
         <BarChart data={campanhas}>
           {" "}
