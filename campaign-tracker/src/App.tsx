@@ -85,16 +85,20 @@ const App = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-family:DM Serif Display, serif">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+      
       {/* Header */}
-      <header className="border-b border-zinc-400 dark:border-zinc-800 flex flex-col sm:flex-row justify-between items-center p-3 sm:p-4">
-        <div className="flex items-center flex-wrap justify-center sm:justify-start">
+      <header className="border-b border-zinc-400 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3 p-3 sm:p-4">
+        
+        <div className="w-full sm:w-auto flex justify-end sm:justify-start">
           <DarkMode />
         </div>
-        <div className="mx-auto">
-          <img src={LogoLight} className="h-10 block dark:hidden" />
-          <img src={LogoDark} className="h-10 hidden dark:block" />
+
+        <div className="flex justify-center w-full sm:w-auto">
+          <img src={LogoLight} className="h-8 sm:h-10 block dark:hidden" />
+          <img src={LogoDark} className="h-8 sm:h-10 hidden dark:block" />
         </div>
+
       </header>
 
       {erroLeads && <p className="text-red-500 p-4">{erroLeads}</p>}
@@ -104,14 +108,16 @@ const App = () => {
           <ClipLoader color="#18181b" size={40} />
         </div>
       ) : (
-        <div className="p-4 flex flex-col gap-6">
+        <div className="p-3 sm:p-4 md:p-6 flex flex-col gap-6">
+          
+          {/* Cards */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <MetricCard
                 titulo="Leads"
                 valor={leads?.length ?? 0}
@@ -139,12 +145,12 @@ const App = () => {
             </div>
           </motion.div>
 
+          {/* Charts */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
-            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-4"
+            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-3 sm:p-4"
           >
             <VendasChart
               vendas={vendas ?? []}
@@ -157,8 +163,7 @@ const App = () => {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
-            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-4"
+            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-3 sm:p-4"
           >
             <CampanhasChart
               campanhas={campanhas ?? []}
@@ -171,20 +176,22 @@ const App = () => {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
-            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-4"
+            className="bg-zinc-200 dark:bg-zinc-900 rounded-xl p-3 sm:p-4"
           >
-            <FunilChart dados={dadosFunil} 
-            titulo="Funil de Conversão"
-              descricao="Distribuição de leads por etapa do processo de vendas"/>
+            <FunilChart
+              dados={dadosFunil}
+              titulo="Funil de Conversão"
+              descricao="Distribuição de leads por etapa do processo de vendas"
+            />
           </motion.div>
+
         </div>
       )}
 
       {/* Footer */}
-      <footer className="border-t border-zinc-400 dark:border-zinc-800 flex justify-end p-3 sm:p-4">
-        <img src={LogoLight} className="h-10 block dark:hidden" />
-        <img src={LogoDark} className="h-10 hidden dark:block" />
+      <footer className="border-t border-zinc-400 dark:border-zinc-800 flex justify-center sm:justify-end p-3 sm:p-4">
+        <img src={LogoLight} className="h-8 sm:h-10 block dark:hidden" />
+        <img src={LogoDark} className="h-8 sm:h-10 hidden dark:block" />
       </footer>
     </div>
   );

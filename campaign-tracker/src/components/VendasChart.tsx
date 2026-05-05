@@ -17,22 +17,50 @@ type VendasChartProps = {
 
 function VendasChart({ vendas, titulo, descricao }: VendasChartProps) {
   return (
-    <div>
-      <h2 className="text-lg font-semibold mb-1">{titulo}</h2>
-      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+    <div className="w-full">
+      <h2 className="text-base sm:text-lg font-semibold mb-1">
+        {titulo}
+      </h2>
+
+      <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-4">
         {descricao}
       </p>
-      <ResponsiveContainer width="100%" height={300}>
-        {" "}
-        <LineChart data={vendas}>
-          {" "}
-          <Tooltip />
-          <Legend />
-          <XAxis dataKey="mes" />{" "}
-          <Line name="Receita" stroke="#6366f1" dataKey="receita" />
-          <Line name="Meta" stroke="#f43f5e" dataKey="meta" /> <YAxis />{" "}
-        </LineChart>{" "}
-      </ResponsiveContainer>
+
+      <div className="w-full h-62.5 sm:h-75 md:h-87.5">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={vendas}>
+            <Tooltip />
+            <Legend />
+
+            <XAxis
+              dataKey="mes"
+              interval={0}
+              angle={-20}
+              textAnchor="end"
+              height={60}
+              tick={{ fontSize: 10 }}
+            />
+
+            <YAxis tick={{ fontSize: 10 }} />
+
+            <Line
+              name="Receita"
+              stroke="#6366f1"
+              dataKey="receita"
+              strokeWidth={2}
+              dot={false}
+            />
+
+            <Line
+              name="Meta"
+              stroke="#f43f5e"
+              dataKey="meta"
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }
