@@ -1,8 +1,9 @@
 import type { Lead, Campanha, Venda } from "../types";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 export async function getLeads(): Promise<Lead[]> {
   try {
-    const response = await fetch(`http://localhost:3001/leads`);
+    const response = await fetch(`${BASE_URL}/leads`);
     if (!response.ok) {
       throw new Error("Erro na requisição");
     }
@@ -17,7 +18,7 @@ export async function getLeads(): Promise<Lead[]> {
 
 export async function getCampanhas(): Promise<Campanha[]> {
   try {
-    const response = await fetch(`http://localhost:3001/campanhas`);
+    const response = await fetch(`${BASE_URL}/campanhas`);
     if (!response.ok) {
       throw new Error("Erro na requisição");
     }
@@ -32,7 +33,7 @@ export async function getCampanhas(): Promise<Campanha[]> {
 
 export async function getVendas(): Promise<Venda[]> {
   try {
-    const response = await fetch(`http://localhost:3001/vendas`);
+    const response = await fetch(`${BASE_URL}/vendas`);
     if (!response.ok) {
       throw new Error("Erro na requisição");
     }

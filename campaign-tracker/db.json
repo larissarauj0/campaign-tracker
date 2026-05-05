@@ -96,11 +96,11 @@
     }
   ],
   "vendas": [
-    { "id": 1, "mes": "Jan", "receita": 32000, "meta": 30000 },
-    { "id": 2, "mes": "Fev", "receita": 28000, "meta": 30000 },
-    { "id": 3, "mes": "Mar", "receita": 35000, "meta": 32000 },
-    { "id": 4, "mes": "Abr", "receita": 41000, "meta": 35000 },
-    { "id": 5, "mes": "Mai", "receita": 38000, "meta": 35000 },
-    { "id": 6, "mes": "Jun", "receita": 45000, "meta": 40000 }
+    { "id": 1, "mes": "Jan", "receita": 3200, "meta": 3000 },
+    { "id": 2, "mes": "Fev", "receita": 2800, "meta": 3200 },
+    { "id": 3, "mes": "Mar", "receita": 3500, "meta": 3100 },
+    { "id": 4, "mes": "Abr", "receita": 4100, "meta": 3800 },
+    { "id": 5, "mes": "Mai", "receita": 3800, "meta": 3300 },
+    { "id": 6, "mes": "Jun", "receita": 4500, "meta": 4000 }
   ]
 }
