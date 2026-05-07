@@ -1,3 +1,4 @@
+
 export type Lead = {
   id: number;
   nome: string;
@@ -9,7 +10,7 @@ export type Campanha = {
   id: number;
   nome: string;
   canal: string;
-  orçamento: number;
+  orcamento: number;
   gasto: number;
   leads: number;
   conversoes: number;
@@ -19,4 +20,30 @@ export type Venda = {
   mes: string;
   receita: number;
   meta: number;
+  custos: number;
+  lucro: number;
 };
+export type Metricas ={
+   id: number;
+   faturamento: number;
+   receitaBruta: number;
+   lucroLiquido: number;
+   margemLucro: number;
+   custos: number;
+   custosDescricao: string;
+   taxas: number;
+   taxasDescricao: string;
+};
+export type Despesas = {
+   id: number;
+   categoria: string;
+   valor: number;
+};
+export type LucroHistorico ={
+   id: number;
+   semana: string;
+   lucro: number;
+};
+
+
+

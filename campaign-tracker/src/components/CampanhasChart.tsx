@@ -15,38 +15,78 @@ type CampanhasChartProps = {
   descricao: string;
 };
 
-function CampanhasChart({ campanhas, titulo, descricao }: CampanhasChartProps) {
+function CampanhasChart({
+  campanhas,
+  titulo,
+  descricao,
+}: CampanhasChartProps) {
   return (
-    <div className="w-full">
-      <h2 className="text-base sm:text-lg font-semibold mb-1">
+    <div className="w-full min-w-0">
+      <h2 className="text-base sm:text-lg font-semibold mb-1 wrap-break-word">
         {titulo}
       </h2>
 
-      <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+      <p className="text-xs sm:text-sm text-[#CCD5DA] dark:text-[#CCD5DA] mb-4 wrap-break-word">
         {descricao}
       </p>
 
-      <div className="w-full h-62.5 sm:h-75 md:h-87.5">
+      <div className="w-full h-62.5 sm:h-75 md:h-87.5 lg:h-100 overflow-hidden">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={campanhas}>
+          <BarChart
+            data={campanhas}
+            margin={{
+              top: 10,
+              right: 10,
+              left: -15,
+              bottom: 20,
+            }}
+          >
             <Tooltip />
-            <Legend />
+
+            <Legend
+              wrapperStyle={{
+                fontSize: "12px",
+              }}
+            />
 
             <XAxis
               dataKey="nome"
               interval={0}
               angle={-20}
               textAnchor="end"
-              height={60}
+              height={70}
               tick={{ fontSize: 10 }}
             />
 
-            <YAxis tick={{ fontSize: 10 }} />
+            <YAxis tick={{ fontSize: 10 }} width={40} />
 
-            <Bar name="Orçamento" fill="#f59e0b" dataKey="orcamento" />
-            <Bar name="Gasto" fill="#06b6d4" dataKey="gasto" />
-            <Bar name="Leads" fill="#6366f1" dataKey="leads" />
-            <Bar name="Conversões" fill="#10b981" dataKey="conversoes" />
+            <Bar
+              name="Orçamento"
+              fill="#003A6C"
+              dataKey="orcamento"
+              radius={[4, 4, 0, 0]}
+            />
+
+            <Bar
+              name="Gasto"
+              fill="#FFBF65"
+              dataKey="gasto"
+              radius={[4, 4, 0, 0]}
+            />
+
+            <Bar
+              name="Leads"
+              fill="#FD8973"
+              dataKey="leads"
+              radius={[4, 4, 0, 0]}
+            />
+
+            <Bar
+              name="Conversões"
+              fill="#10b981"
+              dataKey="conversoes"
+              radius={[4, 4, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

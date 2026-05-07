@@ -22,9 +22,7 @@ type FunilChartProps = {
 function FunilChart({ dados, titulo, descricao }: FunilChartProps) {
   return (
     <div className="w-full">
-      <h2 className="text-base sm:text-lg font-semibold mb-1">
-        {titulo}
-      </h2>
+      <h2 className="text-base sm:text-lg font-semibold mb-1">{titulo}</h2>
 
       <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-4">
         {descricao}
@@ -47,11 +45,7 @@ function FunilChart({ dados, titulo, descricao }: FunilChartProps) {
 
             <YAxis tick={{ fontSize: 10 }} />
 
-            <Bar
-              name="Quantidade"
-              fill="#a78bfa"
-              dataKey="quantidade"
-            />
+            <Bar name="Quantidade" fill="#5129b3" dataKey="quantidade" />
           </BarChart>
         </ResponsiveContainer>
       </div>

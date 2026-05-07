@@ -9,8 +9,7 @@ type MetricCardProps = {
 
 function MetricCard({ titulo, valor, icone, variacao }: MetricCardProps) {
   return (
-    <div className="bg-zinc-200 dark:bg-zinc-900 p-4 sm:p-6 md:p-8 rounded-xl m-2 sm:m-3 md:m-4 shadow-lg flex flex-col w-full">
-      
+    <div className="bg-zinc-200 dark:bg-zinc-900 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg flex flex-col w-full">
       <div className="flex items-center gap-2">
         <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
           <span className="text-base">{icone}</span>
@@ -34,7 +33,6 @@ function MetricCard({ titulo, valor, icone, variacao }: MetricCardProps) {
           </span>
         </div>
       </div>
-
     </div>
   );
 }

@@ -17,10 +17,8 @@ type VendasChartProps = {
 
 function VendasChart({ vendas, titulo, descricao }: VendasChartProps) {
   return (
-    <div className="w-full">
-      <h2 className="text-base sm:text-lg font-semibold mb-1">
-        {titulo}
-      </h2>
+    <div className="w-full p-4">
+      <h2 className="text-base sm:text-lg font-semibold mb-1">{titulo}</h2>
 
       <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-4">
         {descricao}
@@ -45,7 +43,7 @@ function VendasChart({ vendas, titulo, descricao }: VendasChartProps) {
 
             <Line
               name="Receita"
-              stroke="#6366f1"
+              stroke="#003A6C"
               dataKey="receita"
               strokeWidth={2}
               dot={false}
@@ -53,7 +51,7 @@ function VendasChart({ vendas, titulo, descricao }: VendasChartProps) {
 
             <Line
               name="Meta"
-              stroke="#f43f5e"
+              stroke="#FD8973"
               dataKey="meta"
               strokeWidth={2}
               dot={false}

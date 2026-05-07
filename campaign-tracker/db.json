@@ -1,56 +1,56 @@
 {
   "leads": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Ana Silva",
       "origem": "Google Ads",
       "status": "convertido",
       "data": "2024-01-05"
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Carlos Souza",
       "origem": "Instagram",
       "status": "em_negociacao",
       "data": "2024-01-08"
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Mariana Lima",
       "origem": "LinkedIn",
       "status": "novo",
       "data": "2024-01-10"
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "Pedro Costa",
       "origem": "Google Ads",
       "status": "convertido",
       "data": "2024-01-12"
     },
     {
-      "id": 5,
+      "id": "5",
       "nome": "Julia Mendes",
       "origem": "Instagram",
       "status": "perdido",
       "data": "2024-01-15"
     },
     {
-      "id": 6,
+      "id": "6",
       "nome": "Rafael Oliveira",
       "origem": "Email",
       "status": "convertido",
       "data": "2024-01-18"
     },
     {
-      "id": 7,
+      "id": "7",
       "nome": "Fernanda Santos",
       "origem": "LinkedIn",
       "status": "em_negociacao",
       "data": "2024-01-20"
     },
     {
-      "id": 8,
+      "id": "8",
       "nome": "Bruno Alves",
       "origem": "Google Ads",
       "status": "novo",
@@ -59,48 +59,118 @@
   ],
   "campanhas": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Google Ads Janeiro",
       "canal": "Google Ads",
       "orcamento": 5000,
       "gasto": 4200,
-      "leads": 4500,
-      "conversoes": 1200
+      "leads": 45,
+      "conversoes": 12
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Instagram Stories",
       "canal": "Instagram",
       "orcamento": 3000,
       "gasto": 2800,
-      "leads": 1800,
-      "conversoes": 800
+      "leads": 38,
+      "conversoes": 8
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "LinkedIn B2B",
       "canal": "LinkedIn",
       "orcamento": 4000,
       "gasto": 3600,
-      "leads": 2200,
-      "conversoes": 900
+      "leads": 22,
+      "conversoes": 9
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "Email Marketing",
       "canal": "Email",
       "orcamento": 1000,
       "gasto": 800,
-      "leads": 600,
-      "conversoes": 150
+      "leads": 60,
+      "conversoes": 15
     }
   ],
   "vendas": [
-    { "id": 1, "mes": "Jan", "receita": 3200, "meta": 3000 },
-    { "id": 2, "mes": "Fev", "receita": 2800, "meta": 3200 },
-    { "id": 3, "mes": "Mar", "receita": 3500, "meta": 3100 },
-    { "id": 4, "mes": "Abr", "receita": 4100, "meta": 3800 },
-    { "id": 5, "mes": "Mai", "receita": 3800, "meta": 3300 },
-    { "id": 6, "mes": "Jun", "receita": 4500, "meta": 4000 }
+    {
+      "id": "1",
+      "mes": "Jan",
+      "receita": 32000,
+      "meta": 30000,
+      "custos": 18000,
+      "lucro": 14000
+    },
+    {
+      "id": "2",
+      "mes": "Fev",
+      "receita": 28000,
+      "meta": 30000,
+      "custos": 16000,
+      "lucro": 12000
+    },
+    {
+      "id": "3",
+      "mes": "Mar",
+      "receita": 35000,
+      "meta": 32000,
+      "custos": 19000,
+      "lucro": 16000
+    },
+    {
+      "id": "4",
+      "mes": "Abr",
+      "receita": 41000,
+      "meta": 35000,
+      "custos": 22000,
+      "lucro": 19000
+    },
+    {
+      "id": "5",
+      "mes": "Mai",
+      "receita": 38000,
+      "meta": 35000,
+      "custos": 20000,
+      "lucro": 18000
+    },
+    {
+      "id": "6",
+      "mes": "Jun",
+      "receita": 45000,
+      "meta": 40000,
+      "custos": 24000,
+      "lucro": 21000
+    }
+  ],
+  "metricas": [
+    {
+      "id": "1",
+      "faturamento": 45000,
+      "receitaBruta": 45000,
+      "lucroLiquido": 17550,
+      "margemLucro": 39,
+      "custos": 20400,
+      "custosDescricao": "Produtos e operação",
+      "taxas": 2667,
+      "taxasDescricao": "Gateway e marketplace"
+    }
+  ],
+  "despesas": [
+    { "id": "1", "categoria": "Anúncios", "valor": 8400 },
+    { "id": "2", "categoria": "Frete", "valor": 3200 },
+    { "id": "3", "categoria": "Produtos", "valor": 12000 },
+    { "id": "4", "categoria": "Taxas", "valor": 2667 }
+  ],
+  "lucroHistorico": [
+    { "id": "1", "semana": "Seg", "lucro": 2800 },
+    { "id": "2", "semana": "Ter", "lucro": 3200 },
+    { "id": "3", "semana": "Qua", "lucro": 2100 },
+    { "id": "4", "semana": "Qui", "lucro": 4100 },
+    { "id": "5", "semana": "Sex", "lucro": 3800 },
+    { "id": "6", "semana": "Sab", "lucro": 2400 },
+    { "id": "7", "semana": "Dom", "lucro": 1900 }
   ]
 }
