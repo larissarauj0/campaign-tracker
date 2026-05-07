@@ -10,12 +10,12 @@ export default function DarkMode() {
   }, [dark]);
 
   return (
-    <div className="flex items-center justify-end w-full sm:w-auto">
+    <div className="flex pr-4 items-center justify-end shrink-0">
       <Switch
         onClick={() => setDark((prev) => !prev)}
-        className="cursor-pointer m-2 sm:m-4"
+        className=" cursor-pointer mx-2 my-2 sm:mx-4 sm:my-4 shrink-0"
       >
-        <span className="text-base sm:text-lg">
+        <span className="text-base sm:text-lg flex items-center justify-center">
           {dark ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
         </span>
       </Switch>

@@ -15,29 +15,25 @@ type CampanhasChartProps = {
   descricao: string;
 };
 
-function CampanhasChart({
-  campanhas,
-  titulo,
-  descricao,
-}: CampanhasChartProps) {
+function CampanhasChart({ campanhas, titulo, descricao }: CampanhasChartProps) {
   return (
     <div className="w-full min-w-0">
       <h2 className="text-base sm:text-lg font-semibold mb-1 wrap-break-word">
         {titulo}
       </h2>
 
-      <p className="text-xs sm:text-sm text-[#CCD5DA] dark:text-[#CCD5DA] mb-4 wrap-break-word">
+      <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400] mb-4 wrap-break-word">
         {descricao}
       </p>
 
-      <div className="w-full h-62.5 sm:h-75 md:h-87.5 lg:h-100 overflow-hidden">
+      <div className="w-full h-62.5 sm:h-75 md:h-87.5 lg:h-100">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={campanhas}
             margin={{
               top: 10,
               right: 10,
-              left: -15,
+              left: 15,
               bottom: 20,
             }}
           >

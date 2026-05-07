@@ -17,29 +17,44 @@ type VendasChartProps = {
 
 function VendasChart({ vendas, titulo, descricao }: VendasChartProps) {
   return (
-    <div className="w-full p-4">
-      <h2 className="text-base sm:text-lg font-semibold mb-1">{titulo}</h2>
+    <div className="w-full p-3 sm:p-4 min-w-0">
+      <h2 className="text-base sm:text-lg font-semibold mb-1 wrap-break-word">
+        {titulo}
+      </h2>
 
-      <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+      <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-4 wrap-break-word">
         {descricao}
       </p>
 
-      <div className="w-full h-62.5 sm:h-75 md:h-87.5">
+      <div className="w-full h-62.5 sm:h-75 md:h-87.5 lg:h-100 overflow-hidden">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={vendas}>
+          <LineChart
+            data={vendas}
+            margin={{
+              top: 10,
+              right: 10,
+              left: 15,
+              bottom: 20,
+            }}
+          >
             <Tooltip />
-            <Legend />
+
+            <Legend
+              wrapperStyle={{
+                fontSize: "12px",
+              }}
+            />
 
             <XAxis
               dataKey="mes"
               interval={0}
               angle={-20}
               textAnchor="end"
-              height={60}
+              height={70}
               tick={{ fontSize: 10 }}
             />
 
-            <YAxis tick={{ fontSize: 10 }} />
+            <YAxis tick={{ fontSize: 10 }} width={40} />
 
             <Line
               name="Receita"
