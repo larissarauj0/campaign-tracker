@@ -10,9 +10,9 @@
     "ignoreDeprecations": "6.0",
 
     "target": "es2023",
-    "lib": ["ES2023", "DOM"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "esnext",
-    "types": ["vite/client"],
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "skipLibCheck": true,
 
     "moduleResolution": "bundler",
