@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import Home from "./routes/home.tsx";
+import Home from "./routes/Home.tsx"
 import Contas from "./routes/Contas.tsx";
 import Transacoes from "./routes/Transacoes.tsx";
 import Investimentos from "./routes/Investimentos.tsx";

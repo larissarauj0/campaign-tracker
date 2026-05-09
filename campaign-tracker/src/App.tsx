@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import DarkMode from "./components/DarkMode";
 import Sidebar from "./components/SideBar.tsx";
 
-import Logo from "./assets/campaign_tracker_logo.png";
+import Logo from "./assets/campaign_tracker_logolight.png"
 
 import { LuUser } from "react-icons/lu";
 
