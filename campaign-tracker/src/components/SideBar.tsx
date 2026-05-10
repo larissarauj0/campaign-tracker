@@ -1,71 +1,80 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // Importação dos ícones Lucide
 import LogoLight from "../assets/campaign_tracker_logolight.png";
 import LogoDark from "../assets/campaign_tracker_logodark.png";
 
 const SideBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
-    <div className="w-full sm:w-64 bg-zinc-200 dark:bg-zinc-900 p-4 sm:p-6 md:p-8 shrink-0">
-      <div className="flex items-center justify-center sm:justify-start">
-        <img
-          src={LogoLight}
-          className="h-8 sm:h-10 block dark:hidden object-contain"
-          alt="Logo"
-        />
+    <>
+      {/* Botão Hambúrguer - Visível apenas no Mobile */}
+      {!isOpen && (
+        <button
+          onClick={toggleMenu}
+          className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 sm:hidden shadow-sm border border-zinc-300 dark:border-zinc-700"
+        >
+          <Menu size={20} />
+        </button>
+      )}
 
-        <img
-          src={LogoDark}
-          className="h-8 sm:h-10 hidden dark:block object-contain"
-          alt="Logo"
+      {/* Overlay (Fundo escuro) */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 sm:hidden backdrop-blur-sm"
+          onClick={toggleMenu}
         />
+      )}
+
+      {/* SideBar */}
+      <div
+        className={`
+          fixed inset-y-0 left-0 z-50 w-64 bg-zinc-200 dark:bg-zinc-900 p-6 shrink-0 transform transition-transform duration-300 ease-in-out border-r border-zinc-300 dark:border-zinc-800
+          sm:relative sm:translate-x-0 
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        <div className="flex items-center justify-between mb-10">
+          <div className="flex items-center">
+            <img src={LogoLight} className="h-8 block dark:hidden object-contain" alt="Logo" />
+            <img src={LogoDark} className="h-8 hidden dark:block object-contain" alt="Logo" />
+          </div>
+
+          {/* Botão de fechar (Mobile) */}
+          <button 
+            onClick={toggleMenu} 
+            className="sm:hidden p-1 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <nav>
+          <ul className="flex flex-col gap-1">
+            {[
+              { name: "Dashboard", path: "/" },
+              { name: "Contas", path: "/contas" },
+              { name: "Transações", path: "/transacoes" },
+              { name: "Investimentos", path: "/investimentos" },
+              { name: "Configurações", path: "/configuracoes" },
+            ].map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 rounded-md text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-
-      <ul className="flex flex-col sm:flex-col gap-2 mt-6 overflow-x-auto sm:overflow-visible">
-        <li className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer whitespace-nowrap">
-          <Link
-            to="/"
-            className="block px-2 py-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-colors"
-          >
-            Dashboard
-          </Link>
-        </li>
-
-        <li className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer whitespace-nowrap">
-          <Link
-            to="/contas"
-            className="block px-2 py-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-colors"
-          >
-            Contas
-          </Link>
-        </li>
-
-        <li className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer whitespace-nowrap">
-          <Link
-            to="/transacoes"
-            className="block px-2 py-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-colors"
-          >
-            Transações
-          </Link>
-        </li>
-
-        <li className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer whitespace-nowrap">
-          <Link
-            to="/investimentos"
-            className="block px-2 py-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-colors"
-          >
-            Investimentos
-          </Link>
-        </li>
-
-        <li className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer whitespace-nowrap">
-          <Link
-            to="/configuracoes"
-            className="block px-2 py-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-colors"
-          >
-            Configurações
-          </Link>
-        </li>
-      </ul>
-    </div>
+    </>
   );
 };
 
